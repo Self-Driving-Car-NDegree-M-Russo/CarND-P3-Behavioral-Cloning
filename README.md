@@ -12,7 +12,7 @@ The intent is to clone driving behavior, hence the training data set for the mod
 To complete the project, few files are are submitted as part of this Git repo: 
 
 1. An [annotated writeup](./Behavioral_writeup.md) describing the fundamental aspects and limitations of the solution implemented;
-2. A [Python script](./model.py), that is used to train the network;
+2. A [Python script](./model.py), that is used to define and train the network;
 3. A [Model file](./model.h5), output of the training process;
 4. A [Python script](./drive.py), (provided by Udacity) that is used to exercise the model autonomously;
 5. A [Video](./video.mp4), obtaining through a screen capturing of the simulator while driving autonomously.
