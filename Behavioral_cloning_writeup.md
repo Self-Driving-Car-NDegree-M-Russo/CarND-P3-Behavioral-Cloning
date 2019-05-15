@@ -2,9 +2,9 @@
 ### Behavioral Cloning Project
 ---
 
-The goal of this project is the design, training and testing of a Convolutional Neural Network model built usong [Keras](https://keras.io/).
+The goal of this project is the design, training and testing of a Convolutional Neural Network model built using [Keras](https://keras.io/).
 
-The main intent is to implement behavioral cloning from a human driver, hence the input data will be generated through a computer simulator. A user will have to drive the vehicle along a specified track through steering and acceleration/deceleration commands. During this process, images will be saved emulating what would be captured by 3 cameras mounted on the front of the car (left/middle/right). These images will then be used to train an appriate CNN, and the results of the training will be saved as a model to be connected to the same simulator used for the data collection. The model will output the steering angle based on the images captured, while the speed is kept constant through a PID controller.
+The main intent is to implement behavioral cloning from a human driver, hence the input data will be generated through a computer simulator. The user will have to drive the vehicle along a specified track through steering and acceleration/deceleration commands. During this process, images will be saved emulating what would be captured by 3 cameras mounted on the front of the car (left/middle/right). These images will then be used to train an appriate CNN, and the results of the training will be saved as a model to be connected to the same simulator used for the data collection. The model will output the steering angle based on the images captured, while the speed is kept constant through a PID controller.
 
 The Python script containing the Network and the training steps is [model.py](./model.py), and it will be analyzed here in the following. This Git repo contains also another script ([drive.py](./drive.py)) that was provided by the Udacity team and was used to connect the model to the simulator to allow autonomous driving.
 
