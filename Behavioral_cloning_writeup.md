@@ -25,6 +25,7 @@ Despite the relative simplicity of these scenarios, their combination succeeded 
 
 The datasets have been however further enriched as decribed in the `readx3()` helper function provided as part of [model.py](./model.py) script (lines 14-49). In particular, for all the data sets the images from all the cameras are used: the recorder steering angle is used as a label for the image coming from the middle camera, while the one to be used the left/right camera is obtained from the recorded angle +/- a fixed (configurable) correction value. Furthermore every image has been vertically flipped and the relative steering angle changed in sign, so to emulate a run of the track in reverse.
 
+The three datasets are then collected uing the `generator()` helper function.
 
 The input  model will output a steering angle to an autonomous vehicle. 
 
