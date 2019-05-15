@@ -13,7 +13,7 @@ Here below I will give detail of the experience and design in independent sectio
 ---
 ## Data Collection
 
-The data collection phase has probably been the most demanding part of this project. As it will be detailed in the next section, for the actual network design I decided to rely on something relatively consolidated; putting together an effective data set, or better a combination of datasets took several different attemps and quite a bit of trial-and-error.
+The data collection phase has probably been the most demanding part of this project. As it will be detailed in the next section, for the actual network design I decided to rely on something relatively consolidated; on the other hand, putting together an effective data set, or better a combination of datasets, took several different attemps and quite a bit of trial-and-error.
 
 Finally, the best results have been obtained making use of 3 data sets:
 
@@ -21,9 +21,9 @@ Finally, the best results have been obtained making use of 3 data sets:
 * A "reverse" driving of the track, in which, after a U-turn at the very beginning I've driven the car in the opposite of the normal direction;
 * A data set provided as reference directly by Udacity.
 
-Despite the relative simplicity of these scenarios, their compination succeeded in producing a valid round of the vehicle along the track.
+Despite the relative simplicity of these scenarios, their combination succeeded in producing a valid round of the vehicle along the track.
 
-The datasets have been however further enriched as decribed in [model.py](./model.py) (lines xx-yy). In particular, for all the data sets the images from all the cameras are used: the recorder steering angle is used as a label for the image coming from the middle camera, while the one to be used the left/right camera is obtained from the recorded angle +/- a fixed (configurable) correction value. Furthermore every image has been vertically flipped and the relative steering angle changed in sign, so to emulate a run of the track in reverse.
+The datasets have been however further enriched as decribed in the `readx3()` helper function provided as part of [model.py](./model.py) script (lines 14-49). In particular, for all the data sets the images from all the cameras are used: the recorder steering angle is used as a label for the image coming from the middle camera, while the one to be used the left/right camera is obtained from the recorded angle +/- a fixed (configurable) correction value. Furthermore every image has been vertically flipped and the relative steering angle changed in sign, so to emulate a run of the track in reverse.
 
 
 The input  model will output a steering angle to an autonomous vehicle. 
