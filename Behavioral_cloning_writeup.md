@@ -1,6 +1,6 @@
 
-### Behavioral Cloning Project
----
+## Behavioral Cloning Project
+
 
 The goal of this project is the design, training and testing of a Convolutional Neural Network model built using [Keras](https://keras.io/).
 
