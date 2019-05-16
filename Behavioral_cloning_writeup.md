@@ -33,7 +33,7 @@ It contains the identifiers for the image files coming from the 3 cameras as wel
 
 The content of the datasets is split in Train/Validation in an 80/20 percentage using the `train_test_split` function imported from `sklearn` ([model.py](./model.py), lines xx-yy)
 
-The three datasets are then collected together using the `generator()` helper function ([model.py](./model.py), line xx-yy). A _generator_ is a [specific kind of function](https://wiki.python.org/moin/Generators) allowed by the Python language, that can be declared as iterator, i.e. used in a for loop. They are characterized by the usage of the `yield` keyword, and can be used when a piece of code has to access elemnts from a list without loading the full list in memory. This is helpful in case of lists with a heavy footprint, like the one that we are considering for this code.
+The three datasets are then collected together using the `generator()` helper function ([model.py](./model.py), line xx-yy). A _generator_ is a [specific kind of function](https://wiki.python.org/moin/Generators) allowed by the Python language, that can be declared as iterator, i.e. used in a for loop. They are characterized by the usage of the `yield` keyword, and can be used when a piece of code has to access elements from a list without loading the full list in memory. This is helpful in case of lists with a heavy footprint, like the one that we are considering for this code.
 In this case the `generator()` helper will return, every time, a _shuffled_ batch of 32 images/labels taken from the global dataset.
 
 
