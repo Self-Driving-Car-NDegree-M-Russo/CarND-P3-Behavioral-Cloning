@@ -64,7 +64,7 @@ Furthermore:
 * The used optimizer is Adam
 * After a couple of tries, i decided to settle 2 Epochs, with a final accuracy for the model of:
 
-## Autonomus Driving Results
+## Autonomous Driving Results
 
 The output of the previous training is saved in thei Git repo as [model.h5](./model.h5) and can be used to drive the same simulator used for data generation through the [drive.py](./drive.py) script, originally provided by Udacity. The syntax to use to run the model is:
 
@@ -78,3 +78,13 @@ The [video](./video.mp4) file provided in this Git repo shows a screen capture o
 
 ---
 ## Conclusions and Further Notes
+
+As it can be seen from the video, with these combination of Data sets/Model design the vhicle is able to complete at least one lap on the track. I have actually completed more then laps without issues.
+
+There is still some tendency to suboptimal behavior towards the end of the circuit, after the last "chicane" where the vehicle tends to drift too much to its left. As an attempt to fix the problem i collected a couple of datasets focusing on that part of the track specifically and trying either to execute it optimally _or_ to emulate a corrective action, with the vehicle starting in an off-nominal poistion and then driven to the middle of the lane. However this was did not improve the behavior of the model and actually led to the vehicle driving off the track in other parts of it.
+
+
+
+
+
+
