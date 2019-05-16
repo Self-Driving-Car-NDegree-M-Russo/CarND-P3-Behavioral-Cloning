@@ -44,11 +44,11 @@ The design of the Network implemented here is based on the Nvidia solution prese
 | Layer         		|     Description	        					|      Output|
 |:---------------------:|:---------------------------------------------:|:---------------------:|
 |Input    | Cropped Normalized Image | 32x32x3 RGB Image |
-|Convolution    | 5x5, Depth 24  | 28x28x6 |
-|Convolution    | 5x5, Depth 36  | 24x24x12 |
-|Convolution    | 5x5, Depth 48  | 20x20x20 |
-|Convolution    | 5x5, Depth 64  | 16x16x30 |
-|Convolution    | 5x5, Depth 64  | 16x16x30 |
+|Convolution    | 5x5, Depth 24  | 28x28x24 |
+|Convolution    | 5x5, Depth 36  | 24x24x36 |
+|Convolution    | 5x5, Depth 48  | 20x20x48 |
+|Convolution    | 3x3, Depth 64  | 16x16x64 |
+|Convolution    | 3x3, Depth 64  | 16x16x64 |
 |Flatten    | Transition from convolutional to dense  | 4480 |
 |Dense    | Depth 100  | 100 |
 |Dense    | Depth 50  | 50 |
