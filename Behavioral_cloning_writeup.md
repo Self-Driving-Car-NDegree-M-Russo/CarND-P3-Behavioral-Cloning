@@ -8,7 +8,7 @@ The main intent is to implement behavioral cloning from a human driver, hence th
 
 The Python script containing the Network and the training steps is [model.py](./model.py), and it will be analyzed here in the following. This Git repo contains also another script ([drive.py](./drive.py)) that was provided by the Udacity team and was used to connect the model to the simulator to allow autonomous driving.
 
-Here below I will give detail of the experience and design in independent sections dedicated to Data Collection, Model Design and Training and aAutonomus Driving Results.
+Here below I will give detail of the experience and design in independent sections dedicated to Data Collection, Model Design and Training and Autonomus Driving Results.
 
 ---
 ## Data Collection
