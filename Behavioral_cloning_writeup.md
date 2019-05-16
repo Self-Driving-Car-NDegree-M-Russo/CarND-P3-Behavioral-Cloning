@@ -40,6 +40,7 @@ In this case the `generator()` helper will return, every time, a _shuffled_ batc
 
 The design of the Network implemented here is based on the Nvidia solution presented in the Udacity class. After cropping and normalizing steps ([model.py](./model.py), lines xx-yy), the CNN layers can be described as it follows:
 
+
 | Layer         		|     Description	        					|      Output|
 |:---------------------:|:---------------------------------------------:|:---------------------:|
 |Input    | Cropped Normalized Image | 32x32x3 RGB Image |
