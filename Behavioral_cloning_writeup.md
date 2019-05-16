@@ -25,8 +25,20 @@ Despite the relative simplicity of these scenarios, their combination succeeded 
 
 The datasets have been however further enriched as decribed in the `readx3()` helper function provided as part of [model.py](./model.py) script (lines 14-49). In particular, for all the data sets the images from all the cameras are used: the recorder steering angle is used as a label for the image coming from the middle camera, while the one to be used the left/right camera is obtained from the recorded angle +/- a fixed (configurable) correction value. Furthermore every image has been vertically flipped and the relative steering angle changed in sign, so to emulate a run of the track in reverse.
 
-The three datasets are then collected uing the `generator()` helper function.
+The three datasets are firstly parsed making use of the `driving_log.csv` logfile that gets generated with every run ([model.py](./model.py), lines xx-yy). Lines in the logfile are ordered cronologically, and every one of them looks like this:
 
+*INSERT LOGILE EXTRACT*
+
+and contains the identifiers for the image files coming from the 3 cameras as well as the steering angle at the moment of the capture. On top of these information I decided append a "flag", i.e. an identifier for each dataset (0/1/2), that gets used when accessing the actual images.
+
+The content of the datasets is split in Train/Validation in an 80/20 percentage using the `train_test_split` function imported fropm `sklearn` ([model.py](./model.py), lines xx-yy)
+
+The three datasets are then collected together using the `generator()` helper function ([model.py](./model.py), line xx-yy). A _generator_ is a [specific kind of function](https://wiki.python.org/moin/Generators) allowed by the Python language, that can be declared as iterator, i.e. used in a for loop. They are characterized by the usage of the `yield` keyword, and can be used when a piece of code has to access elemnts from a list without loading the full list in memory. This is helpful in case of lists with a heavy footprint, like the one that we are considering for this code.
+In this case the `generator()` helper will return, every time, a _shuffled_ batch of 32 images/labels taken from the global dataset.
+
+
+
+---
 The input  model will output a steering angle to an autonomous vehicle. 
 
 / steps of this project are the following:
