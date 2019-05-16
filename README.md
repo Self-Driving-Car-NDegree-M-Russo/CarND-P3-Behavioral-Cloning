@@ -21,7 +21,7 @@ Dependencies:
 ---
 In order to run the code provided you will need to properly set up your environment. The refence for this is provided through the Udacity Starter Kit available [here](https://github.com/udacity/CarND-Term1-Starter-Kit).
 
-The simulator can be downloaded from the classroom. In the classroom, we have also provided sample data that you can optionally use to help train your model.
+The simulator can be downloaded from the classroom. Together with the simulator, also sample data that can be used to train the model were provided in the classroom.
 
 
 
