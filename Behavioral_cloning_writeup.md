@@ -81,7 +81,11 @@ The [video](./video.mp4) file provided in this Git repo shows a screen capture o
 
 As it can be seen from the video, with these combination of Data sets/Model design the vhicle is able to complete at least one lap on the track. I have actually completed more then _X_ laps without issues.
 
-There is still some tendency to suboptimal behavior towards the end of the circuit, after the last "chicane" where the vehicle tends to drift too much to its left. As an attempt to fix the problem i collected a couple of datasets focusing on that part of the track specifically and trying either to execute it optimally _or_ to emulate a corrective action, with the vehicle starting in an off-nominal poistion and then driven to the middle of the lane. However this did not improve the behavior of the model and actually led to the vehicle driving off the track in other parts of it.
+There is still some tendency to suboptimal behavior towards the end of the circuit, after the last "chicane" where the vehicle tends to drift too much to its left: a screenshot is here below: 
+
+
+
+As an attempt to fix the problem i collected a couple of datasets focusing on that part of the track specifically and trying either to execute it optimally _or_ to emulate a corrective action, with the vehicle starting in an off-nominal poistion and then driven to the middle of the lane. However this did not improve the behavior of the model and actually led to the vehicle driving off the track in other parts of it.
 As said in the Data Collection section, the definition of the appropriate data was indeed one of the most delicate parts of the project: further improvements in this sense could focus both on identifying an appropriate dataset or in veryrying if the network design could be improved. As an option, for example, we could introducing Dropout layers: the low resilience behavior shown seems to indicate some degree of overfitting.
 
 
