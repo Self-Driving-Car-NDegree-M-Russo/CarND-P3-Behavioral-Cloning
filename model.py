@@ -49,7 +49,7 @@ def readx3(angles, images, batch_sample, correction, path):
     angles.append(augmented_steering_right)
 
 
-# Define a generator function
+# Define a generator function to consolidate datasets together
 def generator(samples, batch_size=32):
     num_samples = len(samples)
     while 1:  # Loop forever so the generator never terminates
@@ -120,7 +120,6 @@ def generator(samples, batch_size=32):
 samples1 = []
 samples2 = []
 samples3 = []
-#samples4 = []
 
 # Define collective vectors of samples for training and validation
 train_samples = []
@@ -151,35 +150,23 @@ with open('../My-Data-20190508/driving_log.csv') as csvfile:
 
 size_my_data2 = len(samples3)
 
-# with open('../My-Data-recovery-20190512/driving_log.csv') as csvfile:
-#     reader = csv.reader(csvfile)
-#     for line in reader:
-#         line.append(3)  # Flag for my data - set 3
-#         samples4.append(line)
-#
-# size_my_data3 = len(samples4)
-
 # Split in testing and validation samples
 train_samples1, validation_samples1 = train_test_split(samples1, test_size=0.2)
 train_samples2, validation_samples2 = train_test_split(samples2, test_size=0.2)
 train_samples3, validation_samples3 = train_test_split(samples3, test_size=0.2)
-# train_samples4, validation_samples4 = train_test_split(samples4, test_size=0.2)
 
-# Append vectors together - NOTE: they will be shuffled afterwards
-train_samples = train_samples1 + train_samples2 + train_samples3# + train_samples4
-validation_samples = validation_samples1 + validation_samples2 + validation_samples3# + validation_samples4
+# Append vectors together
+train_samples = train_samples1 + train_samples2 + train_samples3
+validation_samples = validation_samples1 + validation_samples2 + validation_samples3
 
 # Uncomment to print info
-print('Size of my set : ', size_my_data)
-print('Size of my reverse set : ', size_my_data2)
-#print('Size of my detail set : ', size_my_data3)
-print('Size of ud set : ', size_ud_data)
-print('Size of data set : ', size_my_data + size_my_data2 + size_ud_data)
+# print('Size of my set : ', size_my_data)
+# print('Size of my reverse set : ', size_my_data2)
+# print('Size of reference ud set : ', size_ud_data)
+# print('Size of data set : ', size_my_data + size_my_data2 + size_ud_data)
 
-print('Size of training set : ', len(train_samples))
-print('Size of validation set : ', len(validation_samples))
-
-
+# print('Size of training set : ', len(train_samples))
+# print('Size of validation set : ', len(validation_samples))
 
 # 2. Pair a generator function against test/validation samples
 train_generator = generator(train_samples)
@@ -200,7 +187,7 @@ model.add(Cropping2D(cropping=((50, 20), (0, 0)), input_shape=(160, 320, 3)))
 # Normalization
 model.add(Lambda(lambda x: x / 255.0 - 0.5))
 
-# Nvidia
+# Nvidia network structure
 model.add(Convolution2D(24, 5, 5, subsample=(2, 2), activation="relu"))
 model.add(Convolution2D(36, 5, 5, subsample=(2, 2), activation="relu"))
 model.add(Convolution2D(48, 5, 5, subsample=(2, 2), activation="relu"))
@@ -213,12 +200,13 @@ model.add(Dense(50))
 model.add(Dense(10))
 model.add(Dense(1))
 
+# Define optimizer
 model.compile(loss='mse', optimizer='adam')
 
+# Train the model
 # NOTE: samples_per_epoch gets multiplied because of augmentation/reading 3 images
-model.fit_generator(train_generator, samples_per_epoch=(
-            6 * len(train_samples1) + 6 * len(train_samples2) + 6 * len(train_samples3)), \
-                    validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=1)
+model.fit_generator(train_generator, samples_per_epoch=(6 * len(train_samples)), 
+                    validation_data=validation_generator, nb_val_samples=len(validation_samples), nb_epoch=2)
 
 # Save model
-model.save('model_70_script.h5')
+model.save('model_h5')
