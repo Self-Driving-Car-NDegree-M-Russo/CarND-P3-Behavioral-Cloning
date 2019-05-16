@@ -43,7 +43,9 @@ The design of the Network implemented here is based on the Nvidia solution prese
 
 | Layer         		|     Description	        					|      Output|
 |:---------------------:|:---------------------------------------------:|:---------------------:|
-|Input    | Cropped Normalized Image | 32x32x3 RGB Image |
+|Input    | Original Image | 320x160x3 RGB Image |
+|Pre-processing    | Cropping | 320x90x3 RGB Image |
+|Pre-processing    | Normalize data | 320x90x3 Normalized RGB Image |
 |Convolution    | 5x5, Depth 24  | 28x28x24 |
 |Convolution    | 5x5, Depth 36  | 24x24x36 |
 |Convolution    | 5x5, Depth 48  | 20x20x48 |
