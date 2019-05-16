@@ -36,6 +36,23 @@ The content of the datasets is split in Train/Validation in an 80/20 percentage 
 The three datasets are then collected together using the `generator()` helper function ([model.py](./model.py), line xx-yy). A _generator_ is a [specific kind of function](https://wiki.python.org/moin/Generators) allowed by the Python language, that can be declared as iterator, i.e. used in a for loop. They are characterized by the usage of the `yield` keyword, and can be used when a piece of code has to access elements from a list without loading the full list in memory. This is helpful in case of lists with a heavy footprint, like the one that we are considering for this code.
 In this case the `generator()` helper will return, every time, a _shuffled_ batch of 32 images/labels taken from the global dataset.
 
+## Model Design and Training
+
+The design of the Network implemented here is based on the Nvidia solution presented in the Udacity class. After cropping and normalizing steps ([model.py](./model.py), lines xx-yy), the CNN layers can be described as it follows:
+
+| Layer         		|     Description	        					|      Output|
+|:---------------------:|:---------------------------------------------:|:---------------------:|
+|Input    | Cropped Normalized Image | 32x32x3 RGB Image |
+|Convolution    | 5x5, Depth 24  | 28x28x6 |
+|Convolution    | 5x5, Depth 36  | 24x24x12 |
+|Convolution    | 5x5, Depth 48  | 20x20x20 |
+|Convolution    | 5x5, Depth 64  | 16x16x30 |
+|Convolution    | 5x5, Depth 64  | 16x16x30 |
+|Flatten    | Transition from convolutional to dense  | 4480 |
+|Dense    | Depth 100  | 100 |
+|Dense    | Depth 50  | 50 |
+|Dense    | Depth 10  | 10 |
+|Dense    | Depth 1  | 1 (Final classifier) |
 
 
 ---
