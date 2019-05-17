@@ -92,4 +92,4 @@ Another interesting exercise would be to verify the reusbility of the model by r
 
 
 
-As such it would require _YY_ , hence reducing the effort neede for training.
+As such it would require _YY_ , hence reducing the effort needed for training.
