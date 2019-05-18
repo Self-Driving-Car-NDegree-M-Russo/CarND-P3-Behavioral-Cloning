@@ -69,7 +69,7 @@ Furthermore:
 
 * All the activation functions are RELUs.
 * The used optimizer is Adam
-* After a couple of tries, i decided to settle 2 Epochs, with a final accuracy for the model of:
+* After a couple of tries, I decided to settle 2 Epochs, with a final accuracy for the model of 98.13%. The total training time was about 40 minutes on a cloud-hosted GPU. 
 
 ## Autonomous Driving Results
 
