@@ -28,10 +28,10 @@ The datasets have been however further enriched as decribed in the `readx3()` he
 The three datasets are firstly parsed making use of the `driving_log.csv` logfile that gets generated with every run ([model.py](./model.py), lines xx-yy). Lines in the logfile are ordered cronologically, and every one of them looks like this:
 
 
-|../My-data/IMG/center.jpg	|../My-data/IMG/left.jpg |../My-data/IMG/right.jpg	|(...)	|(...)	|(...)	|-5.3656|
+|../My-data/IMG/center.jpg	|../My-data/IMG/left.jpg |../My-data/IMG/right.jpg	|(...)	|(...)	|(...)	|-1.36|
 |:------------:|:----------:|:-------------:|:------------:|:------------:|:-----------:|:-------------:|
 
-It contains the identifiers for the image files coming from the 3 cameras (first 3 fields) as well as the steering angle at the moment of the capture (last field). On top of these information I decided append a "flag", i.e. an identifier for each dataset (0/1/2), that gets used when accessing the actual images.
+It contains the identifiers for the image files coming from the 3 cameras (first 3 fields) as well as the steering angle at the moment of the capture (last field). On top of these information I decided 70 append a "flag", i.e. an identifier for each dataset (0/1/2), that gets used when accessing the actual images.
 
 The content of the datasets is split in Train/Validation in an 80/20 percentage using the `train_test_split` function imported from `sklearn` ([model.py](./model.py), lines xx-yy)
 
