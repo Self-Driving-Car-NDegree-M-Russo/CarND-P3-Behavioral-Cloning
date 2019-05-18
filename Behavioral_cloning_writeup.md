@@ -32,10 +32,10 @@ The datasets have been however further enriched as decribed in the `readx3()` he
 The three datasets are firstly parsed making use of the `driving_log.csv` logfile that gets generated with every run ([model.py](./model.py), lines xx-yy). Lines in the logfile are ordered cronologically, and every one of them looks like this:
 
 
-|../My-data/IMG/center.jpg	|../My-data/IMG/left.jpg |../My-data/IMG/right.jpg	|(...)	|(...)	|(...)	|-1.36|
+|../My-data/IMG/center.jpg	|../My-data/IMG/left.jpg |../My-data/IMG/right.jpg	|-1.36	|0	|0	|9.35 |
 |:------------:|:----------:|:-------------:|:------------:|:------------:|:-----------:|:-------------:|
 
-It contains the identifiers for the image files coming from the 3 cameras (first 3 fields) as well as the steering angle at the moment of the capture (last field). On top of these information I decided 70 append a "flag", i.e. an identifier for each dataset (0/1/2), that gets used when accessing the actual images.
+It contains the identifiers for the image files coming from the 3 cameras (first 3 fields) as well as the steering angle at the moment of the capture (fourth field) and the speed (last field). On top of these information I decided 70 append a "flag", i.e. an identifier for each dataset (0/1/2), that gets used when accessing the actual images.
 
 The content of the datasets is split in Train/Validation in an 80/20 percentage using the `train_test_split` function imported from `sklearn` ([model.py](./model.py), lines xx-yy)
 
@@ -91,8 +91,8 @@ There is still some tendency to suboptimal behavior towards the end of the circu
 
 ![alt text][image1]
 
-As an attempt to fix the problem i collected a couple of datasets focusing on that part of the track specifically and trying either to execute it optimally _or_ to emulate a corrective action, with the vehicle starting in an off-nominal poistion and then driven to the middle of the lane. However this did not improve the behavior of the model and actually led to the vehicle driving off the track in other parts of it.
-As said in the Data Collection section, the definition of the appropriate data was indeed one of the most delicate parts of the project: further improvements in this sense could focus both on identifying an appropriate dataset or in verifying if the network design could be improved. As an option, for example, we could introducing Dropout layers: the low resilience behavior shown seems to indicate some degree of overfitting.
+As an attempt to fix the problem I collected a couple of datasets focusing on that part of the track specifically and trying either to execute it optimally _or_ to emulate a corrective action, with the vehicle starting in an off-nominal poistion and then driven to the middle of the lane. However this did not improve the behavior of the model and actually led to the vehicle driving off the track in other parts of it.
+As said in the Data Collection section, the definition of the appropriate data was indeed one of the most delicate parts of the project: further improvements in this sense could focus both on identifying an appropriate dataset or in verifying if the network design could be improved. As an option, for example, Dropout layers could be introduced: the low resilience behavior shown seems to indicate some degree of overfitting.
 
 Another interesting exercise would be to verify the reusbility of the model by retraining for the second track available as part of the simulator. This case, in fact, would be an example of _X_ (see the diagram here below):
 
