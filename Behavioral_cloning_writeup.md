@@ -8,7 +8,7 @@ The main intent is to implement behavioral cloning from a human driver, hence th
 
 The Python script containing the Network and the training steps is [model.py](./model.py), and it will be analyzed here in the following. This Git repo contains also another script ([drive.py](./drive.py)) that was provided by the Udacity team and was used to connect the model to the simulator to allow autonomous driving.
 
-Here below I will give detail of the experience and design in independent sections dedicated to Data Collection, Model Design and Training and Autonomus Driving Results.
+Here below I will give more details about the experience and the design in independent sections dedicated to Data Collection, Model Design and Training and Autonomus Driving Results.
 
 [//]: # (Image References)
 
@@ -26,9 +26,9 @@ Finally, the best results have been obtained making use of 3 data sets:
 * A "reverse" driving of the track, in which, after a U-turn at the very beginning I've driven the car in the opposite of the normal direction;
 * A data set provided as reference directly by Udacity.
 
-Despite the relative simplicity of these scenarios, their combination succeeded in producing a valid round of the vehicle along the track.
+Despite the relative simplicity of these scenarios, their combination succeeded in producing a valid round of the vehicle along the track. Please note that, given their size, the datasets have NOT been attached to the current version of the project.
 
-The datasets have been however further enriched as decribed in the `readx3()` helper function provided as part of [model.py](./model.py) script (lines 14-49). In particular, for all the data sets the images from all the cameras are used: the recorder steering angle is used as a label for the image coming from the middle camera, while the one to be used the left/right camera is obtained from the recorded angle +/- a fixed (configurable) correction value. Furthermore every image has been vertically flipped and the relative steering angle changed in sign, so to emulate a run of the track in reverse.
+The datasets have been further enriched as decribed in the `readx3()` helper function provided as part of [model.py](./model.py) script (lines 14-49). In particular, for all the data sets the images from all the cameras are used: the recorder steering angle is used as a label for the image coming from the middle camera, while the one to be used the left/right camera is obtained from the recorded angle +/- a fixed (configurable) correction value. Furthermore every image has been vertically flipped and the relative steering angle changed in sign, so to emulate a run of the track in reverse.
 
 The three datasets are firstly parsed making use of the `driving_log.csv` logfile that gets generated with every run ([model.py](./model.py), lines xx-yy). Lines in the logfile are ordered cronologically, and every one of them looks like this:
 
@@ -36,7 +36,7 @@ The three datasets are firstly parsed making use of the `driving_log.csv` logfil
 |../My-data/IMG/center.jpg	|../My-data/IMG/left.jpg |../My-data/IMG/right.jpg	|-1.36	|0	|0	|9.35 |
 |:------------:|:----------:|:-------------:|:------------:|:------------:|:-----------:|:-------------:|
 
-It contains the identifiers for the image files coming from the 3 cameras (first 3 fields) as well as the steering angle at the moment of the capture (fourth field) and the speed (last field). On top of these information I decided 70 append a "flag", i.e. an identifier for each dataset (0/1/2), that gets used when accessing the actual images.
+It contains the identifiers for the image files coming from the 3 cameras (first 3 fields) as well as the steering angle at the moment of the capture (fourth field) and the speed (last field). On top of these information I decided to append a "flag", i.e. an identifier for each dataset (0/1/2), that will get used when accessing the actual images.
 
 The content of the datasets is split in Train/Validation in an 80/20 percentage using the `train_test_split` function imported from `sklearn` ([model.py](./model.py), lines xx-yy)
 
@@ -45,7 +45,7 @@ In this case the `generator()` helper will return, every time, a _shuffled_ batc
 
 ## Model Design and Training
 
-The design of the Network implemented here is based on the Nvidia solution presented in the Udacity class. After cropping and normalizing steps ([model.py](./model.py), lines xx-yy), the CNN layers can be described as it follows:
+The design of the Network implemented here is based on the Nvidia solution presented in the Udacity class. Including cropping and normalizing steps the CNN layers can be described as it follows ([model.py](./model.py), lines xx-yy):
 
 
 | Layer         		|     Description	        					|      Output|
@@ -67,8 +67,8 @@ The design of the Network implemented here is based on the Nvidia solution prese
 
 Furthermore:
 
-* All the activation functions are RELUs.
-* The used optimizer is Adam
+* All the activation functions are RELUs;
+* The used optimizer is Adam;
 * After a couple of tries, I decided to settle 2 Epochs, with a final accuracy for the model of 98.13%. The total training time was about 40 minutes on a cloud-hosted GPU. 
 
 ## Autonomous Driving Results
@@ -81,7 +81,7 @@ python drive.py model.h5
 
 The simulator then can be started in "Autonomous Mode".
 
-The [video](./video.mp4) file provided in this Git repo shows a screen capture of the simulator window while running the model: in order to limit the size of the file and facilitate the upload I have reduced the resolution and icreased the speed at which the track is completed (temporarily modifying the `set_speed` value in line 47 of [drive.py](./drive.py) from 9 to 15).
+There is a [video](./video.mp4) file provided in this Git repo that shows a screen capture of the simulator window while running the model: in order to limit the size of the file and facilitate the upload I have reduced the resolution and icreased the speed at which the track is completed (temporarily modifying the `set_speed` value in line 47 of [drive.py](./drive.py) from 9 to 15).
 
 ---
 ## Conclusions and Further Notes
