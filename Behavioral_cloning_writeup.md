@@ -13,6 +13,7 @@ Here below I will give detail of the experience and design in independent sectio
 [//]: # (Image References)
 
 [image1]: ./images/Video_extract.png "Video Snapshot"
+[image2]: ./images/02-guide-how-transfer-learning-v3-01.png "Guide to learning"
 
 ---
 ## Data Collection
@@ -68,7 +69,7 @@ Furthermore:
 
 * All the activation functions are RELUs.
 * The used optimizer is Adam
-* After a couple of tries, i decided to settle 2 Epochs, with a final accuracy for the model of:
+* After a couple of tries, I decided to settle 2 Epochs, with a final accuracy for the model of 98.13%. The total training time was about 40 minutes on a cloud-hosted GPU. 
 
 ## Autonomous Driving Results
 
@@ -85,7 +86,7 @@ The [video](./video.mp4) file provided in this Git repo shows a screen capture o
 ---
 ## Conclusions and Further Notes
 
-As it can be seen from the video, with these combination of Data sets/Model design the vhicle is able to complete at least one lap on the track. I have actually completed several laps without issues.
+As it can be seen from the video, with these combination of Data sets/Model design the vehicle is able to complete at least one lap on the track. I have actually completed several laps without issues.
 
 There is still some tendency to suboptimal behavior towards the end of the circuit, after the last "chicane" where the vehicle tends to drift too much to its left: a screenshot is here below: 
 
@@ -94,8 +95,8 @@ There is still some tendency to suboptimal behavior towards the end of the circu
 As an attempt to fix the problem I collected a couple of datasets focusing on that part of the track specifically and trying either to execute it optimally _or_ to emulate a corrective action, with the vehicle starting in an off-nominal poistion and then driven to the middle of the lane. However this did not improve the behavior of the model and actually led to the vehicle driving off the track in other parts of it.
 As said in the Data Collection section, the definition of the appropriate data was indeed one of the most delicate parts of the project: further improvements in this sense could focus both on identifying an appropriate dataset or in verifying if the network design could be improved. As an option, for example, Dropout layers could be introduced: the low resilience behavior shown seems to indicate some degree of overfitting.
 
-Another interesting exercise would be to verify the reusbility of the model by retraining for the second track available as part of the simulator. This case, in fact, would be an example of _X_ (see the diagram here below):
+Another interesting exercise would be to verify the reusbility of the model by retraining for the second track available as part of the simulator. This case, in fact, would be an example of transfer learning with _Similar_ datasets (left-hand side diagram here below, from the Udacity classroom):
 
+![alt text][image2]
 
-
-As such it would require _YY_ , hence reducing the effort needed for training.
+As such, with the appropriate data set it would require only fine tuning, hence reducing the effort needed for training.
