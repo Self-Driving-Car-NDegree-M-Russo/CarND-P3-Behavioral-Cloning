@@ -68,8 +68,8 @@ The design of the Network implemented here is based on the Nvidia solution prese
 Furthermore:
 
 * All the activation functions are RELUs;
-* The used optimizer is Adam;
-* After a couple of tries, I decided to settle 2 Epochs, with a final accuracy for the model of 98.13%. The total training time was about 40 minutes on a cloud-hosted GPU. 
+* The used optimizer is Adam ([model.py](./model.py), lines 236);
+* After a couple of tries, I decided to settle for 2 Epochs, with a final accuracy for the model of 98.13%. The total training time was about 40 minutes on a cloud-hosted GPU. 
 
 ## Autonomous Driving Results
 
