@@ -12,8 +12,24 @@ from sklearn.utils import shuffle
 
 # Helper function to read in images from center, left and right cameras
 def readx3(angles, images, batch_sample, correction, path):
+    """
+        Function to read (and further augment) all the images coming from a training run of the vehicle simulator
+        provided as part of the Udacity program for self-driving car engineering - behavioral cloning project
 
-    # read in images
+        Inputs:
+            angles - Vector of steering angles, to use as labels for the images. Will be updated in the function
+            images - Vector of images.  Will be updated in the function.
+            batch_sample - extract of a logfile from the run, containing full path to the original location of the images
+                          as well as the steering angle.
+            correction - fixed correction (in degrees) to apply to left and right image to account for misalignement
+            path - current path where the images are stored.
+
+        The function directly modifies vectors of images and angles, appending new items, hence does not return anything
+        explicitly
+    """
+
+    # Read in images
+    # Get the name of the file as last component of the original path, then update with current path
     img_center = cv2.imread(path + batch_sample[0].split('/')[-1])
     img_left = cv2.imread(path + batch_sample[1].split('/')[-1])
     img_right = cv2.imread(path + batch_sample[2].split('/')[-1])
@@ -51,6 +67,22 @@ def readx3(angles, images, batch_sample, correction, path):
 
 # Define a generator function to consolidate datasets together
 def generator(samples, batch_size=32):
+    """
+        Generator function to iterate in the list of training/validation samples for the training of the CNN as part of
+        the Udacity program for self-driving car engineering - behavioral cloning project
+
+           Inputs:
+               samples: vector of samples - each sample is an extract of a logfile from the run, containing full path
+                        to the original location of the images, as well as the steering angle.
+                batch_size: size of the batch of images/angles returned. Default = 32.
+
+           Outputs:
+                X_train: Batch of images to be used for training/validation
+                y_training: Batch of labels (steering angle) to be used for training/validation
+
+        NOTE: this version of the script has hard-coded paths to images location, that will have to be changed
+        accordingly to use it properly
+    """
     num_samples = len(samples)
     while 1:  # Loop forever so the generator never terminates
         shuffle(samples)
