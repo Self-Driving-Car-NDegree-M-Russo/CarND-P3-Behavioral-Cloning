@@ -17,6 +17,8 @@ To complete the project, few files are are submitted as part of this Git repo:
 4. A [Python script](./drive.py), (provided by Udacity) that is used to exercise the model autonomously;
 5. A [Video](./video.mp4), obtaining through a screen capturing of the simulator while driving autonomously.
 
+**NOTE**: The video is also availabe on [YouTube](https://youtu.be/ZOKTThWdZMo)
+
 Dependencies:
 ---
 In order to run the code provided you will need to properly set up your environment. The refence for this is provided through the Udacity Starter Kit available [here](https://github.com/udacity/CarND-Term1-Starter-Kit).
